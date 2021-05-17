@@ -29,15 +29,19 @@ if(!function_exists('logDebug')){
 doDefine('CSS_URL_PATH', '/css/');
 doDefine('JS_URL_PATH', '/js/');
 
-//database defaults
-doDefine("DB_HOST", 'localhost');
-doDefine('DB_NAME', 'dbghmmwivd0hm5');
-doDefine('DB_USER', 'uwlgzghffczzo');
-doDefine('DB_PASS', 'b0Yl1tt1E');
+//get base site-config
+$site_config = parse_ini_file(REAL_PATH.'site_config.ini');
+if(!$site_config || !Func::verifySite($site_config['site_number'], $site_config['site_domain'])){
+	echo 'no site config';
+	exit;
+}
+doDefine('SITE_NUMBER', $site_config['site_number']);
 
-//create the one and only instance of the DbFactory
-require_once('classes/factories/DbFactory.php');
-$dbFactory = DbFactory::getInstance();
+//database defaults
+doDefine("DB_HOST", $site_config['db_host']);
+doDefine('DB_NAME', $site_config['db_name']);
+doDefine('DB_USER', $site_config['db_user']);
+doDefine('DB_PASS', $site_config['db_pass']);
 
 if(!function_exists('ourautoload')){
 	function ourautoload($classname){
@@ -58,6 +62,7 @@ if(!function_exists('ourautoload')){
 spl_autoload_register('ourautoload');
 
 //create the factories to be injected into classes and functions
+$dbFactory				= DbFactory::getInstance();
 $configFactory			= new ConfigFactory;
 $pictureFactory			= new PictureFactory;
 $userFactory			= new UserFactory;
@@ -67,14 +72,6 @@ $videoFactory			= new VideoFactory;
 //logDebug('starting session');
 session_start();
 $alreadyLoggedIn = (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
-
-//get base site-config
-$site_config = parse_ini_file(REAL_PATH.'site_config.ini');
-if(!$site_config || !Func::verifySite($site_config['site_number'], $site_config['site_domain'])){
-	echo 'no site config';
-	exit;
-}
-doDefine('SITE_NUMBER', $site_config['site_number']);
 
 //prettymuch every page needs this...
 $config = $configFactory->newInstance();
