@@ -31,7 +31,7 @@ doDefine('JS_URL_PATH', '/js/');
 
 if(!function_exists('ourautoload')){
 	function ourautoload($classname){
-		if(file_exists(REAL_PATH."classes/factories/{$classname}.php") && $classname !== 'DbFactory'){
+		if(file_exists(REAL_PATH."classes/factories/{$classname}.php")){
 			require_once("classes/factories/{$classname}.php");
 		}
 		if(file_exists(REAL_PATH."classes/core/{$classname}.php")){
