@@ -1,5 +1,6 @@
 logs/
 nbproject/
 php.ini
+site_config.ini
 todo.txt
 uploads/
