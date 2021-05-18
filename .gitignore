@@ -1,7 +1,7 @@
 .htaccess
+logs/myDebug.log
 nbproject/
 php.ini
 public_html/php_errorlog
 site_config.ini
 todo.txt
-uploads/
