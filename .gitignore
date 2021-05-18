@@ -2,6 +2,8 @@
 logs/myDebug.log
 nbproject/
 php.ini
+public_html/ajax/php_errorlog
 public_html/php_errorlog
 site_config.ini
 todo.txt
+webstats/
