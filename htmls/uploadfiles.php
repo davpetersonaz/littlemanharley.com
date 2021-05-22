@@ -15,11 +15,6 @@ if(isset($_POST["submitFiles"]) && !empty($_FILES['files'])){
 	
 	/* this is not called until all the filse are uploaded from the form */
 	
-	/* TODO: theres gotta be a way to use javascript to check each file and removing existing ones from the form?? */
-	/* not sure how that would be executed */
-	/* ajax call, followed by form submission (with appropriate retractions) */
-	/* and don't forget to move the warnings of files that were not uploaded so they still display */
-	
 	$errors = array();
 	$uploadedFiles = array();
 	$pictureExtensions = array("jpeg", "jpg", "png", "gif");

@@ -97,6 +97,7 @@ class ImageGateway extends AbstractGateway{
 					FROM images
 					WHERE original_filename = :original_filename";
 		$values = array('original_filename'=>$originalFilename);
+//		$this->logQueryAndValues($query, $values, 'getImageByOriginalName');
 		$rows = $this->db->select($query, $values);
 		return (isset($rows[0]) ? $rows[0] : false);
 	}
