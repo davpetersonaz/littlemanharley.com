@@ -98,6 +98,7 @@ $(document).ready(function(){
 		if(confirm('Are you sure you wish to delete this image?')){
 			var full_id = $(this).attr('id');
 			var id = full_id.substring(7);
+//			console.warn('pic id', id);
 			$.ajax({
 				method: 'POST',
 				url: '/ajax/uploadImages.php',
@@ -105,7 +106,7 @@ $(document).ready(function(){
 			}).done(function(data){
 				if(data === 'done'){
 					console.warn('removing div');
-					$('#pic_'+id).remove();
+					$('#pic_'+id).parent().remove();
 				}
 			});
 		}

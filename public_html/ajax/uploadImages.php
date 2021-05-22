@@ -25,13 +25,13 @@ if(isset($_POST['caption'], $_POST['text'])){
 if(isset($_POST['delete'])){
 	$imageToDelete = $imageGateway->getImageByid($_POST['delete']);
 	$imageGateway->deleteImage($_POST['delete']);
-	unlink(Pictures::BEST_PICS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::FEAT_PICS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::HOME_PICS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::ORIG_PICS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::THUMBS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::VIDS_PATH.$imageToDelete['filename']);
-	unlink(Pictures::VIDS_THUMBS_PATH.$imageToDelete['filename']);
+	if(file_exists(Pictures::BEST_PICS_PATH.$imageToDelete['filename'])){ unlink(Pictures::BEST_PICS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::FEAT_PICS_PATH.$imageToDelete['filename'])){ unlink(Pictures::FEAT_PICS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::HOME_PICS_PATH.$imageToDelete['filename'])){ unlink(Pictures::HOME_PICS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::ORIG_PICS_PATH.$imageToDelete['filename'])){ unlink(Pictures::ORIG_PICS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::THUMBS_PATH.$imageToDelete['filename'])){ unlink(Pictures::THUMBS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::VIDS_PATH.$imageToDelete['filename'])){ unlink(Pictures::VIDS_PATH.$imageToDelete['filename']); }
+	if(file_exists(Pictures::VIDS_THUMBS_PATH.$imageToDelete['filename'])){ unlink(Pictures::VIDS_THUMBS_PATH.$imageToDelete['filename']); }
 }else
 
 if(isset($_POST['rotate_left'])){
