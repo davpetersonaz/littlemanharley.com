@@ -21,7 +21,7 @@ $best_ctr = 0;
 	<?php if(isset($best_pics[$best_ctr])): ?>
 		<div class='pictures row'>
 			
-			<?php for($i=0;$i<4;$i++): ?>
+			<?php for($i=0;$i<8;$i++): ?>
 				<?php if(isset($best_pics[$best_ctr])): ?>
 			
 					<div class='pic-pad col-xs-12 col-sm-6 col-md-3'>
